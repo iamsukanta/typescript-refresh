@@ -1,3 +1,6 @@
 var age = 20;
-age = 89;
-console.log(age);
+var myName = 'Sukanta';
+var isFunctional = true;
+if (isFunctional) {
+    console.log(myName, 'myName ...');
+}

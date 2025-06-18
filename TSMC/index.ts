@@ -1,4 +1,7 @@
-let age:number = 20;
+let age: number = 20;
+let myName: string = 'Sukanta';
+let isFunctional: boolean = true;
 
-age = 89;
-console.log(age);
+if (isFunctional) {
+    console.log(myName, 'myName ...');
+}
