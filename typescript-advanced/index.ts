@@ -22,5 +22,27 @@ const optionalUser: OptionalUser = {
     email: 'sampleuser@gmail.com',
     name: 'Alice'
 }
-
 console.log(optionalUser);
+
+
+// Conditional Types
+
+type IsString<T> = T extends string ? 'yes' : 'no';
+
+type Test1 = IsString<string>;
+
+const test1: Test1 = 'yes';
+console.log(test1);
+
+
+type Test2 = IsString<number>;
+
+const test2: Test2 = 'no';
+console.log(test2);
+
+// Infer Keyword
+type CustomReturnType<T> = T extends (...args: any[]) => infer R ? R : any;
+type Func = (a: number, b: number) => number;
+type Result = CustomReturnType<Func>;
+const result: Result = 50;
+console.log(result);

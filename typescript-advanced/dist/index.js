@@ -9,4 +9,10 @@ const optionalUser = {
     name: 'Alice'
 };
 console.log(optionalUser);
+const test1 = 'yes';
+console.log(test1);
+const test2 = 'no';
+console.log(test2);
+const result = 50;
+console.log(result);
 //# sourceMappingURL=index.js.map
