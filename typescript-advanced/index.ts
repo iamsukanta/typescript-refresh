@@ -53,3 +53,21 @@ function merge<T extends object, U extends object = {}>(obj1: T, obj2: U): T & U
 }
 
 console.log(merge({ name: 'Alice'}, {}));
+
+
+// Discriminated Unions
+type Shape = 
+    | { kind: 'circle'; radius: number }    
+    | { kind: 'square'; sideLength: number };
+
+function area(shape: Shape): number {
+    switch (shape.kind) {
+        case 'circle':
+            return Math.PI * shape.radius ** 2;
+        case 'square':
+            return shape.sideLength ** 2;
+    }
+}
+
+console.log(area({ kind: 'circle', radius: 5 }));
+console.log(area({ kind: 'square', sideLength: 4 }));

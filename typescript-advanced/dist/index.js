@@ -18,5 +18,15 @@ console.log(result);
 function merge(obj1, obj2) {
     return Object.assign(Object.assign({}, obj1), obj2);
 }
-console.log(merge({ name: 'Alice' }, { email: 'sfsdf' }));
+console.log(merge({ name: 'Alice' }, {}));
+function area(shape) {
+    switch (shape.kind) {
+        case 'circle':
+            return Math.PI * shape.radius ** 2;
+        case 'square':
+            return shape.sideLength ** 2;
+    }
+}
+console.log(area({ kind: 'circle', radius: 5 }));
+console.log(area({ kind: 'square', sideLength: 4 }));
 //# sourceMappingURL=index.js.map
