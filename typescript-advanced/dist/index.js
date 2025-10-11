@@ -29,4 +29,6 @@ function area(shape) {
 }
 console.log(area({ kind: 'circle', radius: 5 }));
 console.log(area({ kind: 'square', sideLength: 4 }));
+const userName = "Alice";
+console.log(userName);
 //# sourceMappingURL=index.js.map

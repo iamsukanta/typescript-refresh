@@ -1,6 +1,6 @@
 type User = {
-    id: number,
-    name: string,
+    id: number;
+    name: string;
     email: string
 }
 
@@ -71,3 +71,13 @@ function area(shape: Shape): number {
 
 console.log(area({ kind: 'circle', radius: 5 }));
 console.log(area({ kind: 'square', sideLength: 4 }));
+
+// Index access Types
+
+type MyUser = { id: number, profile: { name: string, age: number } };
+
+type userNameType = MyUser["profile"]["name"];
+const userName: userNameType = "Alice";
+console.log(userName);
+
+// Utility Types - Pick and Omit
