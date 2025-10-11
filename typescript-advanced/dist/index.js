@@ -15,4 +15,8 @@ const test2 = 'no';
 console.log(test2);
 const result = 50;
 console.log(result);
+function merge(obj1, obj2) {
+    return Object.assign(Object.assign({}, obj1), obj2);
+}
+console.log(merge({ name: 'Alice' }, { email: 'sfsdf' }));
 //# sourceMappingURL=index.js.map
