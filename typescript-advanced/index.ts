@@ -80,7 +80,7 @@ type userNameType = MyUser["profile"]["name"];
 const userName: userNameType = "Alice";
 console.log(userName);
 
-// Utility Types - Pick and Omit
+// Utility Types - Readonly, PartialUser, Pick and Omit
 
 type Readuser = Readonly<User>;
 const readUser: Readuser = { id: 5, name: 'John', email: 'dsf' };
@@ -93,4 +93,8 @@ console.log(newUser);
 type PickUser = Pick<User, 'id' | 'name'>;
 const pickedUser: PickUser = { id: 10, name: 'Bob' };
 console.log(pickedUser);
+
+type OmitUser = Omit<User, 'email'>;
+const omittedUser: OmitUser = { id: 20, name: 'Charlie' };
+console.log(omittedUser);
 

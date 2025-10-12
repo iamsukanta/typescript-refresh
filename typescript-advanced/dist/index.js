@@ -37,4 +37,6 @@ const newUser = { name: 'Alice' };
 console.log(newUser);
 const pickedUser = { id: 10, name: 'Bob' };
 console.log(pickedUser);
+const omittedUser = { id: 20, name: 'Charlie' };
+console.log(omittedUser);
 //# sourceMappingURL=index.js.map
