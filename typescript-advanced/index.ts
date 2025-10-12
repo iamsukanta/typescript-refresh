@@ -81,3 +81,12 @@ const userName: userNameType = "Alice";
 console.log(userName);
 
 // Utility Types - Pick and Omit
+
+type Readuser = Readonly<User>;
+const readUser: Readuser = { id: 5, name: 'John', email: 'dsf' };
+console.log(readUser);
+
+type PartialUser = Partial<User>;
+const newUser: PartialUser = { name: 'Alice' };
+console.log(newUser);
+

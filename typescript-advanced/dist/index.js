@@ -31,4 +31,8 @@ console.log(area({ kind: 'circle', radius: 5 }));
 console.log(area({ kind: 'square', sideLength: 4 }));
 const userName = "Alice";
 console.log(userName);
+const readUser = { id: 5, name: 'John', email: 'dsf' };
+console.log(readUser);
+const newUser = { name: 'Alice' };
+console.log(newUser);
 //# sourceMappingURL=index.js.map
