@@ -35,4 +35,6 @@ const readUser = { id: 5, name: 'John', email: 'dsf' };
 console.log(readUser);
 const newUser = { name: 'Alice' };
 console.log(newUser);
+const pickedUser = { id: 10, name: 'Bob' };
+console.log(pickedUser);
 //# sourceMappingURL=index.js.map

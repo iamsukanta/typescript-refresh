@@ -90,3 +90,7 @@ type PartialUser = Partial<User>;
 const newUser: PartialUser = { name: 'Alice' };
 console.log(newUser);
 
+type PickUser = Pick<User, 'id' | 'name'>;
+const pickedUser: PickUser = { id: 10, name: 'Bob' };
+console.log(pickedUser);
+
