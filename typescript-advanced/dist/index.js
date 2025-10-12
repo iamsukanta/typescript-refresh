@@ -41,4 +41,8 @@ const omittedUser = { id: 20, name: 'Charlie' };
 console.log(omittedUser);
 const recordUser = { id: 'dd', name: true };
 console.log(recordUser);
+const requiredUser = { id: 1, name: 'Alice', email: 'sukantabalacste28@gmail.com' };
+console.log(requiredUser);
+const handleEvent = 'onScroll';
+console.log(handleEvent);
 //# sourceMappingURL=index.js.map

@@ -106,3 +106,9 @@ type RequiredUser = Required<Partial<User>>;
 const requiredUser: RequiredUser = { id: 1, name: 'Alice', email: 'sukantabalacste28@gmail.com' };
 console.log(requiredUser);
 
+// Template Literal Types
+type EventName = 'click' | 'scroll' | 'mousemove';
+type EventHandler = `on${Capitalize<EventName>}`;
+
+const handleEvent: EventHandler = 'onScroll';
+console.log(handleEvent);
