@@ -39,4 +39,6 @@ const pickedUser = { id: 10, name: 'Bob' };
 console.log(pickedUser);
 const omittedUser = { id: 20, name: 'Charlie' };
 console.log(omittedUser);
+const recordUser = { id: 'dd', name: true };
+console.log(recordUser);
 //# sourceMappingURL=index.js.map

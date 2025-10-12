@@ -98,3 +98,7 @@ type OmitUser = Omit<User, 'email'>;
 const omittedUser: OmitUser = { id: 20, name: 'Charlie' };
 console.log(omittedUser);
 
+type RecordUser = Record<'id' | 'name', string | number | boolean>;
+const recordUser: RecordUser = { id: 'dd', name: true };
+console.log(recordUser);
+
