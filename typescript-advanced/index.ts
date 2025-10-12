@@ -102,3 +102,7 @@ type RecordUser = Record<'id' | 'name', string | number | boolean>;
 const recordUser: RecordUser = { id: 'dd', name: true };
 console.log(recordUser);
 
+type RequiredUser = Required<Partial<User>>;
+const requiredUser: RequiredUser = { id: 1, name: 'Alice', email: 'sukantabalacste28@gmail.com' };
+console.log(requiredUser);
+
