@@ -45,4 +45,31 @@ const requiredUser = { id: 1, name: 'Alice', email: 'sukantabalacste28@gmail.com
 console.log(requiredUser);
 const handleEvent = 'onScroll';
 console.log(handleEvent);
+function getProperty(obj, key) {
+    return obj[key];
+}
+const user = { id: 1, name: 'Alice', email: 'kkk@gmail.com' };
+const userName1 = getProperty(user, 'email');
+console.log(userName1);
+function outer(x = 90) {
+    let message = 'I am from outer function';
+    function inner() {
+        console.log(message);
+        console.log(x, 'outer function parameter');
+    }
+    inner();
+    return inner;
+}
+const innerFunc = outer(10);
+innerFunc();
+function myCallBackFunction(callback) {
+    console.log('I am from callback function');
+    let sum = 0;
+    for (let i = 0; i <= 10; i++) {
+        sum += i;
+    }
+    console.log('Sum from 0 to 10 is:', sum);
+    callback && callback();
+}
+myCallBackFunction();
 //# sourceMappingURL=index.js.map

@@ -112,3 +112,46 @@ type EventHandler = `on${Capitalize<EventName>}`;
 
 const handleEvent: EventHandler = 'onScroll';
 console.log(handleEvent);
+
+// Keyof, Lookup and Generic Functions
+function getProperty<T, K extends keyof T> (obj: T, key: K): T[K] {
+    return obj[key];
+}
+
+const user: User = { id: 1, name: 'Alice', email: 'kkk@gmail.com'};
+const userName1 = getProperty(user, 'email');
+console.log(userName1);
+
+
+// Closure Functions Example
+
+function outer(x = 90) {
+    let message = 'I am from outer function';
+    function inner() {
+        console.log(message);
+        console.log(x, 'outer function parameter');
+    }
+    inner();
+    return inner;
+}
+
+const innerFunc = outer(10);
+innerFunc();
+
+
+
+// Callback Functions Example
+
+function myCallBackFunction(callback?: () => void) {
+    console.log('I am from callback function');
+    // Simple calculation
+    let sum = 0
+    for (let i = 0; i <= 10; i++) {
+        sum += i;
+    }
+    console.log('Sum from 0 to 10 is:', sum);
+
+    callback && callback();
+}
+
+myCallBackFunction();
