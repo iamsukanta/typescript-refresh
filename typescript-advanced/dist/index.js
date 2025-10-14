@@ -77,4 +77,12 @@ const userType = {
     name: 'Alice'
 };
 console.log(userType);
+const employeeInterface = {
+    id: 1,
+    name: 'Bob',
+    salary: 50000
+};
+console.log(employeeInterface);
+const u = { name: "Alice", age: 25 };
+console.log(u);
 //# sourceMappingURL=index.js.map

@@ -176,3 +176,37 @@ interface UserInterface {
     name: string;
     email?: string;
 }
+
+interface Person {
+    id: number;
+    name: string;
+}
+
+interface Employee extends Person {
+    salary: number;
+}
+
+const employeeInterface: Employee = {
+    id: 1,
+    name: 'Bob',
+    salary: 50000
+}
+
+console.log(employeeInterface);
+
+
+// Interface Merging
+
+interface UserInterfaceExample {
+  name: string;
+}
+
+interface UserInterfaceExample {
+  age: number;
+}
+
+const u: UserInterfaceExample = { name: "Alice", age: 25 }; 
+
+console.log(u);
+
+
