@@ -155,3 +155,24 @@ function myCallBackFunction(callback?: () => void) {
 }
 
 myCallBackFunction();
+
+// Types vs Interfaces
+
+type UserType =  {
+    id: number;
+    name: string;
+    email?: string;
+}
+
+const userType: UserType = {
+    id: 1,
+    name: 'Alice'
+}
+console.log(userType);
+
+
+interface UserInterface {
+    id: number;
+    name: string;
+    email?: string;
+}

@@ -72,4 +72,9 @@ function myCallBackFunction(callback) {
     callback && callback();
 }
 myCallBackFunction();
+const userType = {
+    id: 1,
+    name: 'Alice'
+};
+console.log(userType);
 //# sourceMappingURL=index.js.map
