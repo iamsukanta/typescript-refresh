@@ -209,4 +209,12 @@ const u: UserInterfaceExample = { name: "Alice", age: 25 };
 
 console.log(u);
 
+function genericExample<T>(value: T): T {
+    return value;
+}
 
+const genericString = genericExample<string>('Hello, Generics!');
+console.log(genericString);
+
+const genericNumber = genericExample<number>(42);
+console.log(genericNumber);

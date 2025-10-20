@@ -86,3 +86,15 @@ console.log(employeeInterface);
 const u = { name: "Alice", age: 25 };
 console.log(u);
 //# sourceMappingURL=index.js.map
+
+function myApp() {
+    return 'Ok';
+}
+
+myApp();
+
+function myApp() {
+    return 'Not Ok';
+}
+
+myApp();
