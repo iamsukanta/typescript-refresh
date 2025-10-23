@@ -1,4 +1,4 @@
-let body = document.getElementById("body");
+let objContainer = document.getElementById("objectContainer");
 let scoreBoard = document.createElement("p");
 scoreBoard.innerText = "Score: 0";
 let element = document.createElement("div");
@@ -7,16 +7,16 @@ element.innerText = "Hello";
 element.style.position = "absolute";
 element.style.left = "50%";
 element.style.top = "50%";
-body.appendChild(element);
-body.appendChild(scoreBoard);
+objContainer.appendChild(element);
+objContainer.appendChild(scoreBoard);
 
 setInterval(() => {
-    element.style.left = Math.random() * window.innerWidth + "px";
-    element.style.top = Math.random() * window.innerHeight + "px";
+    element.style.left = (Math.random() * window.innerWidth - 20) + "px";
+    element.style.top = (Math.random() * window.innerHeight - 80) + "px";
 }, 2000);
 
 // moving object in a definite area not whole screen
-setInterval(() => {
+// setInterval(() => {
 
 element.addEventListener("click", () => {
     score++;

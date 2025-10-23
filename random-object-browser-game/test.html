@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Moving Object Inside Inset Box</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    /* Header section */
+    .header {
+      height: 80px;
+      background-color: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      border-bottom: 2px solid #ccc;
+    }
+
+    /* Inset box */
+    .inset-box {
+      position: fixed;
+      top: calc(80px + 20px); /* header height + 20px gap */
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      border: 3px solid #111;
+      box-sizing: border-box;
+      overflow: hidden; /* prevent object from going outside */
+      background: #fafafa;
+    }
+
+    /* Moving object */
+    .moving-object {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: crimson;
+      border-radius: 50%;
+      transition: all 0.3s ease; /* smooth movement */
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Moving Object Game</h1>
+  </div>
+
+  <div class="inset-box" id="box">
+    <div class="moving-object" id="obj"></div>
+  </div>
+
+  <script>
+    const box = document.getElementById('box');
+    const obj = document.getElementById('obj');
+
+    function moveObjectRandomly() {
+      // Get box dimensions
+      const boxRect = box.getBoundingClientRect();
+
+      // Get object dimensions
+      const objRect = obj.getBoundingClientRect();
+
+      // Calculate random position within the box boundaries
+      const maxLeft = boxRect.width - objRect.width;
+      const maxTop = boxRect.height - objRect.height;
+
+      const randomLeft = Math.random() * maxLeft;
+      const randomTop = Math.random() * maxTop;
+
+      // Apply new position
+      obj.style.left = `${randomLeft}px`;
+      obj.style.top = `${randomTop}px`;
+    }
+
+    // Move object every 800ms
+    setInterval(moveObjectRandomly, 1000);
+  </script>
+</body>
+</html>
