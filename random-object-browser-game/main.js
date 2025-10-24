@@ -1,24 +1,52 @@
-let objContainer = document.getElementById("objectContainer");
-let scoreBoard = document.createElement("p");
-scoreBoard.innerText = "Score: 0";
-let element = document.createElement("div");
-let score = 0;
-element.innerText = "Hello";
-element.style.position = "absolute";
-element.style.left = "50%";
-element.style.top = "50%";
-objContainer.appendChild(element);
-objContainer.appendChild(scoreBoard);
+    const playBtn = document.getElementById('playButton');
+    const pauseBtn = document.getElementById('pauseButton');
+    const resetBtn = document.getElementById('resetButton');
+    const box = document.getElementById('box');
+    const obj = document.getElementById('obj');
+    let score = 0;
+    const scoreDisplay = document.getElementById('score');
+    scoreDisplay.innerText = `Score: ${score}`;
 
-setInterval(() => {
-    element.style.left = (Math.random() * window.innerWidth - 20) + "px";
-    element.style.top = (Math.random() * window.innerHeight - 80) + "px";
-}, 2000);
+    let moveInterval = null;
 
-// moving object in a definite area not whole screen
-// setInterval(() => {
+    function moveObjectRandomly() {
+        // Get box dimensions
+        const boxRect = box.getBoundingClientRect();
 
-element.addEventListener("click", () => {
-    score++;
-    scoreBoard.innerText = "Score: " + score;
-});
+        // Get object dimensions
+        const objRect = obj.getBoundingClientRect();
+
+        // Calculate random position within the box boundaries
+        const maxLeft = boxRect.width - objRect.width;
+        const maxTop = boxRect.height - objRect.height;
+
+        const randomLeft = Math.random() * maxLeft;
+        const randomTop = Math.random() * maxTop;
+
+        // Apply new position
+        obj.style.left = `${randomLeft}px`;
+        obj.style.top = `${randomTop}px`;
+    }
+
+    playBtn.addEventListener('click', () => {
+        // prevent multiple intervals
+        if (moveInterval) clearInterval(moveInterval);
+        moveObjectRandomly();
+        moveInterval = setInterval(moveObjectRandomly, 2000);
+    });
+
+    pauseBtn.addEventListener('click', () => {
+        clearInterval(moveInterval);
+    });
+
+    resetBtn.addEventListener('click', () => {
+        score = 0;
+        scoreDisplay.innerText = `Score: ${score}`;
+        clearInterval(moveInterval);
+    });
+
+    // Handle object click
+    obj.addEventListener('click', () => {
+        score += 1;
+        scoreDisplay.innerText = `Score: ${score}`;
+    });

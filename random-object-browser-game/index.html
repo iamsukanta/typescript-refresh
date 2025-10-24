@@ -7,49 +7,18 @@
     <meta name="description" content="Random Object Browser Game" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-      <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-    }
-
-    /* Header section */
-    .header {
-      height: 80px; /* you can adjust as needed */
-      background-color: #f0f0f0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      border-bottom: 2px solid #ccc;
-    }
-
-    /* Inset box below the header */
-    .inset-box {
-      position: fixed;
-      top: calc(80px + 20px); /* header height + 20px gap */
-      left: 20px;
-      right: 20px;
-      bottom: 20px;
-      border: 3px solid #111;
-      box-sizing: border-box;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: system-ui, sans-serif;
-    }
-  </style>
   </head>
-  <body id="body">
-    <div id="app">
-      <div class="header">
-        <h1>My Game Title</h1>
-      </div>
-
-      <div class="inset-box" id="objectContainer">
-      </div>
+  <body>
+    <div class="header">
+      <h4 id="score"></h4>
+      <button id="playButton" type="button">Play</button>
+      <button id="pauseButton" type="button">Pause</button>
+      <button id="resetButton" type="button">Reset</button>
     </div>
 
+    <div class="inset-box" id="box">
+      <div class="moving-object" id="obj"></div>
+    </div>
     <script src="main.js"></script>
   </body>
 </html>
