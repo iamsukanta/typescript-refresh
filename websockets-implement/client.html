@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Raw WebSocket Client Demo</title>
+  <style>
+    body { font-family: system-ui, Arial; max-width: 720px; margin: 20px auto; }
+    #log { height: 300px; border: 1px solid #ddd; padding: 8px; overflow:auto; white-space: pre-wrap; background: #fafafa; }
+    #controls { margin-top: 10px; display:flex; gap:8px; }
+    input[type="text"] { flex: 1; padding: 8px; }
+  </style>
+</head>
+<body>
+  <h2>Raw WebSocket Client (chat)</h2>
+  <div>
+    Server: <input id="url" type="text" value="ws://localhost:8080" style="width:300px" />
+    <button id="connectBtn">Connect</button>
+    <button id="disconnectBtn" disabled>Disconnect</button>
+  </div>
+
+  <div id="log" aria-live="polite"></div>
+
+  <div id="controls">
+    <input id="msg" type="text" placeholder="Type a chat message" />
+    <button id="sendBtn" disabled>Send</button>
+  </div>
+
+  <script>
+    let ws = null;
+    const logEl = document.getElementById('log');
+    const connectBtn = document.getElementById('connectBtn');
+    const disconnectBtn = document.getElementById('disconnectBtn');
+    const sendBtn = document.getElementById('sendBtn');
+    const urlInput = document.getElementById('url');
+
+    function log(...args) {
+      const line = args.map(a => (typeof a === 'object' ? JSON.stringify(a) : String(a))).join(' ');
+      logEl.textContent += line + '\\n';
+      logEl.scrollTop = logEl.scrollHeight;
+    }
+
+    function setConnected(connected) {
+      connectBtn.disabled = connected;
+      disconnectBtn.disabled = !connected;
+      sendBtn.disabled = !connected;
+    }
+
+    connectBtn.addEventListener('click', () => {
+      const url = urlInput.value.trim();
+      if (!url) return alert('Enter a WebSocket URL');
+
+      // Create WebSocket
+      ws = new WebSocket(url);
+
+      ws.addEventListener('open', () => {
+        log('[open] Connected to', url);
+        setConnected(true);
+
+        // Example: send a small hello
+        ws.send(JSON.stringify({ type: 'hello', ts: Date.now() }));
+      });
+
+      ws.addEventListener('message', (ev) => {
+        // Messages from server are typically text
+        let payload = ev.data;
+        try {
+          payload = JSON.parse(ev.data);
+        } catch (err) { /* keep raw */ }
+        log('[message]', payload);
+      });
+
+      ws.addEventListener('close', (ev) => {
+        log('[close] code=' + ev.code + ' reason=' + ev.reason);
+        setConnected(false);
+      });
+
+      ws.addEventListener('error', (err) => {
+        console.error('WebSocket error', err);
+        log('[error] Check console for details');
+      });
+
+      // Optional: respond to server pings automatically (browser handles pong automatically)
+    });
+
+    disconnectBtn.addEventListener('click', () => {
+      if (!ws) return;
+      ws.close(1000, 'Client closing');
+      ws = null;
+      setConnected(false);
+    });
+
+    sendBtn.addEventListener('click', () => {
+      const input = document.getElementById('msg');
+      const text = input.value.trim();
+      if (!text || !ws || ws.readyState !== WebSocket.OPEN) return;
+      const payload = { type: 'chat', text };
+      ws.send(JSON.stringify(payload));
+      input.value = '';
+    });
+
+    // Allow Enter to send
+    document.getElementById('msg').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') sendBtn.click();
+    });
+
+    // On load: log a short helper
+    log('Open the server (node server.js) and then click Connect.\\n');
+  </script>
+</body>
+</html>
